@@ -1,6 +1,6 @@
 import ReactFlow, { Node, Edge, Controls, Background } from "reactflow";
 import "reactflow/dist/style.css";
-import DBMLEntity from "./DBMLEntity";
+import DBMLEntity from "@/components/DBMLEntity";
 
 const nodeTypes = {
   dbmlEntity: DBMLEntity,

@@ -1,8 +1,8 @@
 import ReactFlow, { Node, Edge } from "reactflow";
-import EntityNode from "./EntityNode";
+import DBMLEntity from "@/components/DBMLEntity";
 
 const nodeTypes = {
-  entityNode: EntityNode,
+  entityNode: DBMLEntity,
 };
 
 const initialNodes: Node[] = [

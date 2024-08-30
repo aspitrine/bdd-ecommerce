@@ -1,8 +1,8 @@
 import { Results } from "@electric-sql/pglite";
 import { useState } from "react";
-import { db } from "../db/client";
-import TextareaSQL from "./TextareaSQL";
-import { Button } from "./ui/button";
+import { db } from "@/db/client";
+import TextareaSQL from "@/components/TextareaSQL";
+import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,

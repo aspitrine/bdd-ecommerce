@@ -1,7 +1,7 @@
 import { useState } from "react";
-import InteractionBdd from "./components/InteractionBdd";
-import Schema from "./components/Schema";
-import { edges, nodes } from "./flowData";
+import InteractionBdd from "@/components/InteractionBdd";
+import Schema from "@/components/Schema";
+import { edges, nodes } from "@/flowData";
 import {
   Accordion,
   AccordionContent,

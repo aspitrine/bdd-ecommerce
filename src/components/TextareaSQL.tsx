@@ -3,18 +3,6 @@ import { createHighlighter } from "shiki";
 import { shikiToMonaco } from "@shikijs/monaco";
 import * as monaco from "monaco-editor-core";
 
-// Create the highlighter, it can be reused
-const highlighter = await createHighlighter({
-  themes: ["vitesse-dark", "vitesse-light"],
-  langs: ["sql"],
-});
-
-// Register the languageIds first. Only registered languages will be highlighted.
-monaco.languages.register({ id: "sql" });
-
-// Register the themes from Shiki, and provide syntax highlighting for Monaco.
-shikiToMonaco(highlighter, monaco);
-
 interface MonacoEditorCoreProps {
   value: string;
   onChange: (value: string) => void;
@@ -32,6 +20,20 @@ const MonacoEditorCore: React.FC<MonacoEditorCoreProps> = ({
   );
 
   useEffect(() => {
+    (async () => {
+      // Create the highlighter, it can be reused
+      const highlighter = await createHighlighter({
+        themes: ["vitesse-dark", "vitesse-light"],
+        langs: ["sql"],
+      });
+
+      // Register the languageIds first. Only registered languages will be highlighted.
+      monaco.languages.register({ id: "sql" });
+
+      // Register the themes from Shiki, and provide syntax highlighting for Monaco.
+      shikiToMonaco(highlighter, monaco);
+    })();
+
     if (editorRef.current) {
       editorInstanceRef.current = monaco.editor.create(editorRef.current, {
         value: value,
