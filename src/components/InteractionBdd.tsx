@@ -67,16 +67,13 @@ export default function InteractionBdd() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {result?.rows.map((row) => (
-              <TableRow>
+            {result?.rows.map((row, indexRow) => (
+              <TableRow key={indexRow}>
                 {fields?.map((field, indexField) => (
-                  <TableCell
-                    className="p-2"
-                    key={`${field}-${row.id}-${indexField}`}
-                  >
+                  <TableCell className="p-2" key={`${indexRow}-${indexField}`}>
                     {row[field] instanceof Date
                       ? row[field].toLocaleDateString()
-                      : row[field]}
+                      : JSON.stringify(row[field], null, 2)}
                   </TableCell>
                 ))}
               </TableRow>

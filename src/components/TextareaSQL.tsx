@@ -69,7 +69,7 @@ const MonacoEditorCore: React.FC<MonacoEditorCoreProps> = ({
   return (
     <>
       <input type="hidden" value={value} name={name} />
-      <div ref={editorRef} className="min-h-[100px] w-full" />
+      <div ref={editorRef} className="min-h-[200px] w-full" />
     </>
   );
 };
