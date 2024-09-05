@@ -40,7 +40,7 @@ export default function InteractionBdd() {
     }
   };
 
-  const fields = result?.fields.map((field) => field.name);
+  const fields = Array.from(new Set(result?.fields.map((field) => field.name)));
 
   return (
     <div className="flex flex-col gap-2">
