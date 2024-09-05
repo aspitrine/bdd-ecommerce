@@ -3,17 +3,9 @@ import { useState } from "react";
 import { db } from "@/db/client";
 import TextareaSQL from "@/components/TextareaSQL";
 import { Button } from "@/components/ui/button";
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 import { AlertCircle } from "lucide-react";
+import DisplayData from "./DisplayData";
 
 export default function InteractionBdd() {
   const [query, setQuery] = useState("SELECT 1 AS num;");
@@ -56,31 +48,7 @@ export default function InteractionBdd() {
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       )}
-      {result && (
-        <Table>
-          <TableCaption>Résultat de la requête</TableCaption>
-          <TableHeader>
-            <TableRow>
-              {fields?.map((field, fieldIndex) => (
-                <TableHead key={`${field}-${fieldIndex}`}>{field}</TableHead>
-              ))}
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {result?.rows.map((row, indexRow) => (
-              <TableRow key={indexRow}>
-                {fields?.map((field, indexField) => (
-                  <TableCell className="p-2" key={`${indexRow}-${indexField}`}>
-                    {row[field] instanceof Date
-                      ? row[field].toLocaleDateString()
-                      : JSON.stringify(row[field], null, 2)}
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      )}
+      {result && <DisplayData data={result.rows} fields={fields} />}
     </div>
   );
 }
